@@ -8,7 +8,7 @@ public class TopMenuWithSearchSection {
 
     private Page page;
     private Locator testerShopHyperlink;
-    public Locator contactUsHyperlink;
+    private Locator contactUsHyperlink;
     private  Locator clothesHyperlink;
     private Locator relevantProductsHyperlink;
     private Locator artHyperlink;
