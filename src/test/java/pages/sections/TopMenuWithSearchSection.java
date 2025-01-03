@@ -29,7 +29,6 @@ public class TopMenuWithSearchSection {
         this.expandableLanguageChooseList = page.getByLabel("Lista rozwijana języków");
         this.logInHyperlink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName(" Zaloguj się"));
         this.cartHyperlink = page.getByText("Koszyk");
-        this.cartHyperlink = page.getByText("Koszyk");
 
 
     }
