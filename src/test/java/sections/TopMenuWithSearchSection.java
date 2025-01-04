@@ -1,8 +1,9 @@
-package pages.sections;
+package sections;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import pages.SearchResultPage;
 
 public class TopMenuWithSearchSection {
 
@@ -33,8 +34,9 @@ public class TopMenuWithSearchSection {
 
     }
 
-    public void typeProductNameAndStartSearching(String productName){
+    public SearchResultPage typeProductNameAndStartSearching(String productName){
         searchInputField.pressSequentially(productName);
         searchInputField.press("Enter");
+        return new SearchResultPage(page);
     }
 }
