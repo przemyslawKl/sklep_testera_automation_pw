@@ -6,7 +6,7 @@ import sections.TopMenuWithSearchSection;
 
 public class HomePage {
 
-    private Page page;
+    protected Page page;
     @Getter
     private TopMenuWithSearchSection topMenuWithSearchSection;
 
