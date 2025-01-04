@@ -22,9 +22,9 @@ public class BaseTest {
     static void launchBrowser() {
         pw = Playwright.create();
         browser = pw.chromium().launch(new BrowserType.LaunchOptions()
-                .setHeadless(false)
-                .setSlowMo(1000));
+                .setHeadless(false));
     }
+
 
     @BeforeEach
     void createContextandPage() {
