@@ -11,7 +11,7 @@ import static org.example.utils.StringUtils.removeRoundBrackets;
 
 public class BaseTest {
 
-    private static Playwright pw;
+    protected static Playwright pw;
 
     protected static Browser browser;
 

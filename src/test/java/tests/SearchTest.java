@@ -14,6 +14,7 @@ public class SearchTest extends BaseTest {
     @BeforeEach
     void beforeEach(){
         homePage = new HomePage(page);
+
     }
 
     @Test
