@@ -23,7 +23,7 @@ public class SearchTest extends BaseTest {
         homePage = new HomePage(page);
         page.navigate(Properties.getProperty("app.url"));
     }
-    @DisplayName("Search for product")
+    @DisplayName("Search for product in browser")
     @ParameterizedTest(name = "Search for {0} should return {1} times {0}")
     @MethodSource("searchData")
     void should_return_products_by_product_name(String productName, int productCounter) {
@@ -36,7 +36,10 @@ public class SearchTest extends BaseTest {
                 Arguments.of("T-Shirt", 1),
                 Arguments.of ("Mug", 5),
                 Arguments.of ("Frame", 4),
-                Arguments.of("Sweater", 1)
+                Arguments.of("Sweater", 1),
+                Arguments.of("Graphics", 3),
+                Arguments.of("Notebook", 3),
+                Arguments.of("Cushion", 3)
         );
     }
 }

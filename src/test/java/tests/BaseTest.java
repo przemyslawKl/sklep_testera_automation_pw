@@ -22,11 +22,10 @@ public class BaseTest {
     @BeforeAll
     static void launchBrowser() {
         pw = Playwright.create();
-        browser = pw.chromium().launch(new BrowserType.LaunchOptions()
+        browser = pw.webkit().launch(new BrowserType.LaunchOptions()
                 .setHeadless(Boolean.parseBoolean(Properties.getProperty("browser.headless")))
-                .setSlowMo(Integer.parseInt(Properties.getProperty("browser.slow.motion")))
-                .setChannel(Properties.getProperty("browser.channel")));
-    }
+                .setSlowMo(Integer.parseInt(Properties.getProperty("browser.slow.motion")))); }
+                //.setChannel(Properties.getProperty("browser.channel")));
 
 
     @BeforeEach
