@@ -22,7 +22,7 @@ public class SearchTest extends BaseTest {
     void beforeEach(){
         homePage = new HomePage(page);
         page.navigate(Properties.getProperty("app.url"));
-        homePage.getTopNavigationSection().changeLanguageToEnglish();
+        //homePage.getTopNavigationSection().changeLanguageToEnglish();
     }
     @DisplayName("Search for product in browser")
     @ParameterizedTest(name = "Search for {0} should return {1} times {0}")
