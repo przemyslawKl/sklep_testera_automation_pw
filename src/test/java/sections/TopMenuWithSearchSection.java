@@ -14,22 +14,16 @@ public class TopMenuWithSearchSection {
     private Locator relevantProductsHyperlink;
     private Locator artHyperlink;
     private Locator searchInputField;
-    private Locator expandableLanguageChooseList;
-    private Locator logInHyperlink;
-    private Locator cartHyperlink;
 
 
     public TopMenuWithSearchSection(Page page) {
         this.page = page;
-        this.searchInputField = page.getByPlaceholder("Szukaj w naszym katalogu");
-        this.testerShopHyperlink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Sklep Testera"));
-        this.clothesHyperlink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Clothes"));
-        this.relevantProductsHyperlink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Produkty powiązane"));
-        this.artHyperlink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Art").setExact(true));
-        this.contactUsHyperlink = page.locator("#contact-link").getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Kontakt z nami"));
-        this.expandableLanguageChooseList = page.getByLabel("Lista rozwijana języków");
-        this.logInHyperlink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName(" Zaloguj się"));
-        this.cartHyperlink = page.getByText("Koszyk");
+        this.searchInputField = page.locator("input[name=s]");
+        this.testerShopHyperlink = page.locator("#_desktop_logo");
+        this.clothesHyperlink = page.locator("#category-3");
+        this.relevantProductsHyperlink = page.locator("#category-6");
+        this.artHyperlink = page.locator("#category-9");
+        this.contactUsHyperlink = page.locator("#contact-link");
 
 
     }
