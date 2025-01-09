@@ -3,6 +3,7 @@ package sections;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import pages.ArtPage;
 import pages.SearchResultPage;
 
 public class TopMenuWithSearchSection {
@@ -32,5 +33,10 @@ public class TopMenuWithSearchSection {
         searchInputField.pressSequentially(productName);
         searchInputField.press("Enter");
         return new SearchResultPage(page);
+    }
+
+    public ArtPage clickArtLink() {
+        artHyperlink.click();
+        return new ArtPage(page);
     }
 }
