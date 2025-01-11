@@ -2,9 +2,8 @@ package sections;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.function.Predicate;
 
 public class FilterBySection {
 
@@ -19,6 +18,10 @@ public class FilterBySection {
     private Locator greyBackground;
 
 
+    private Predicate<Locator> waitForCondition;
+
+
+
     public FilterBySection(Page page) {
         this.priceLabel = page.locator("#search_filters li p");
         this.leftSlider = page.locator(".ui-slider-handle").first();
@@ -27,28 +30,43 @@ public class FilterBySection {
         this.greyBackground = page.locator(".overlay_inner");
     }
 
+    private void waitForGreyBackgroundToHide() {
+        page.waitForCondition(greyBackground::isHidden);
+    }
+
+    private void moveLeftSliderByMouseOnLeft(){
+        double x = leftSlider.boundingBox().x;
+        double y = leftSlider.boundingBox().y;
+
+        double middleX = x + leftSlider.boundingBox().width / 2;
+        double middleY = y + leftSlider.boundingBox().height / 2;
+
+        leftSlider.scrollIntoViewIfNeeded();
+        page.mouse().move(middleX, middleY);
+        page.mouse().down();
+        page.mouse().move(x + 14.00, y);
+        page.mouse().up();
+    }
+/*
     public void showLeftSliderLocator(){
         System.out.println("X point of slider :" + leftSlider.boundingBox().x);
         System.out.println("Y point of slider :" + leftSlider.boundingBox().y);
         System.out.println("Width of slider :" + leftSlider.boundingBox().width);
         System.out.println("Height of slider :" + leftSlider.boundingBox().height);
-    }
+    }*/  // code for now is not used anywhere (gives information about slider)
 
     public void filterProductsByPriceUsingMouseLeftSlider(double fromPrice){
 
         while (fromPrice >= getFromPrice()) {
-            double x = leftSlider.boundingBox().x;
-            double y = leftSlider.boundingBox().y;
+            moveLeftSliderByMouseOnLeft();
+            waitForGreyBackgroundToHide();
+        }
+    }
 
-            double middleX = x + leftSlider.boundingBox().width / 2;
-            double middleY = y + leftSlider.boundingBox().height / 2;
-
-            leftSlider.scrollIntoViewIfNeeded();
-            page.mouse().move(middleX, middleY);
-            page.mouse().down();
-            page.mouse().move(x + 14.00, y);
-            page.mouse().up();
-            page.waitForCondition(greyBackground::isHidden);
+    public void filterProductsByPriceUsingKeyboardLeftSlider(double fromPrice){
+        while (fromPrice >= getFromPrice()) {
+            leftSlider.press("ArrowRight");
+            waitForGreyBackgroundToHide();
         }
     }
 
