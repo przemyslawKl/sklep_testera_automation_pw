@@ -1,5 +1,6 @@
 package tests;
 
+import org.assertj.core.api.Assertions;
 import org.example.utils.Properties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,10 @@ class FilterByPriceTest extends BaseTest {
 
     private HomePage homePage;
 
+    private double fromPrice = 25.00;
+
+    private int fromPriceInInt = (int) fromPrice;
+
     @BeforeEach
     void beforeEach() {
         homePage = new HomePage(page);
@@ -19,13 +24,7 @@ class FilterByPriceTest extends BaseTest {
     @Test
     void should_return_products_with_price_greater_than_40() {
         ArtPage artPage = homePage.getTopMenuWithSearchSection().clickArtLink();
-        System.out.println(artPage.getArtProductSection().getProductsPricesAsDoubles());
-        String newPageUrl = page.url() + "&q=Price-zł-40-44";
-        page.navigate(newPageUrl);
-        System.out.println(artPage.getArtProductSection().getProductsPricesAsDoubles());
-        page.waitForTimeout(5000);
-
-
-
+        artPage.getFilterBySection().filterProductsByPriceUsingMouseLeftSlider(fromPrice);
+        Assertions.assertThat(artPage.getArtProductSection().getProductsPricesAsDoubles().stream().allMatch(p -> p > fromPriceInInt)).isTrue();
     }
 }
