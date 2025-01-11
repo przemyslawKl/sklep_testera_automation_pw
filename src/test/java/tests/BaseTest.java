@@ -29,7 +29,6 @@ public class BaseTest {
     @BeforeEach
     void createContextandPage() {
         context = browser.newContext();
-
         if(isTracingEnabled()){
         context.tracing().start(new Tracing.StartOptions()
                 .setScreenshots(true)
@@ -38,7 +37,7 @@ public class BaseTest {
         }
         page = context.newPage();
         page.setViewportSize(Integer.parseInt(Properties.getProperty("browser.width")),
-                Integer.parseInt(Properties.getProperty("browser.height")));;
+                Integer.parseInt(Properties.getProperty("browser.height")));
     }
 
     @AfterEach

@@ -27,6 +27,6 @@ public class ArtProductSection {
                 .map(p -> p.replaceAll("[^\\d.,]", "")) // remove any non-numeric characters except for dot and comma
                 .map(p -> p.replaceAll(",", ".")) // replace comma with dot
                 .map(Double::parseDouble)
-                .collect(Collectors.toList())
+                .collect(Collectors.toList());
     }
 }
