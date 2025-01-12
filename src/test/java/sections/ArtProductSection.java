@@ -2,10 +2,12 @@ package sections;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
 public class ArtProductSection {
 
     private Page page;

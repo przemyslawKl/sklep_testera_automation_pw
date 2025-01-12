@@ -2,9 +2,13 @@ package sections;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import lombok.Getter;
+
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
+@Getter
 public class FilterBySection {
 
     private Locator leftSlider;
@@ -17,8 +21,15 @@ public class FilterBySection {
 
     private Locator greyBackground;
 
+    private Locator mattPaperCheckbox;
 
+    private Locator activeFilterGreyLabel;
+
+    private String correctUrlForTestOnMattPaper;
     private Predicate<Locator> waitForCondition;
+
+    private List<Locator> products;
+
 
 
 
@@ -28,10 +39,26 @@ public class FilterBySection {
         this.rightSlider = page.locator(".ui-slider-handle").last();
         this.page = page;
         this.greyBackground = page.locator(".overlay_inner");
+        this.mattPaperCheckbox = page.locator("(//span[@class='custom-checkbox'])[1]");
+        this.activeFilterGreyLabel = page.locator("#js-active-search-filters");
+        this.correctUrlForTestOnMattPaper = "https://skleptestera.pl/index.php?id_category=9&controller=category&id_lang=2&q=Composition-Matt+paper";
+        this.products = page.locator(".js-product").all();
     }
 
-    private void waitForGreyBackgroundToHide() {
+    public void waitForGreyBackgroundToHide() {
         page.waitForCondition(greyBackground::isHidden);
+    }
+
+    public List<Locator> countAllProductsOnPage(){
+        return page.locator(".js-product").all();
+    }
+
+    public void waitForGreyFilterLabelToBeVisible() {
+        page.waitForCondition(activeFilterGreyLabel::isVisible);
+    }
+
+    public void waitForProperURLForTestOnMattPaper(){
+        page.waitForURL(correctUrlForTestOnMattPaper);
     }
 
     private void moveLeftSliderByMouseOnLeft(){
@@ -60,6 +87,7 @@ public class FilterBySection {
         while (fromPrice >= getFromPrice()) {
             moveLeftSliderByMouseOnLeft();
             waitForGreyBackgroundToHide();
+            waitForProperURLForTestOnMattPaper();
         }
     }
 
@@ -78,5 +106,12 @@ public class FilterBySection {
             .map(Double::parseDouble)
             .findFirst()
             .orElseThrow(() -> new RuntimeException("Invalid price format"));
-        }
+    }
+
+        public void clickOnMattPaperCheckbox() {
+            mattPaperCheckbox.click();
+            waitForGreyBackgroundToHide();
+            waitForGreyFilterLabelToBeVisible();
+    }
+
 }
