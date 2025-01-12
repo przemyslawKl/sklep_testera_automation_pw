@@ -42,4 +42,6 @@ class FilterByPriceTest extends BaseTest {
         Assertions.assertThat(artPage.getArtProductSection().getProductsPricesAsDoubles().stream().allMatch(p -> p > fromPriceInInt)).isTrue();
     }
 
+
+
 }
