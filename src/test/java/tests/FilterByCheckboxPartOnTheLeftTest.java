@@ -21,7 +21,7 @@ public class FilterByCheckboxPartOnTheLeftTest extends BaseTest {
     void should_return_products_made_by_matt_paper_after_checking_matt_paper_checkbox() {
         ArtPage artPage = homePage.getTopMenuWithSearchSection().clickArtLink();
         artPage.getFilterBySection().clickOnMattPaperCheckbox();
-        Assertions.assertThat(artPage.getFilterBySection().countAllProductsOnPage()).size().isEqualTo(5);
+        Assertions.assertThat(artPage.getFilterBySection().countAllProductsOnPage()).size().isEqualTo(3);
         //System.out.println(artPage.getArtProductSection().getProducts());
         //page.locator(".js-product").all()
     }

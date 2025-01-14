@@ -87,7 +87,6 @@ public class FilterBySection {
         while (fromPrice >= getFromPrice()) {
             moveLeftSliderByMouseOnLeft();
             waitForGreyBackgroundToHide();
-            waitForProperURLForTestOnMattPaper();
         }
     }
 
