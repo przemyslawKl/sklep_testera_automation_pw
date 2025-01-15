@@ -5,29 +5,33 @@ import org.example.utils.Properties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.HomePage;
+import pages.ProductDetailsPage;
 import pages.SearchResultPage;
 
 class FullBuyAndCheckoutTest extends BaseTest {
 
 
-    HomePage homePage;
-
-    String productName = "Customizable Mug";
-
-    String productNameWithSmallSecondWord = "Customizable mug";
-
+    private HomePage homePage;
+    private String testMessage = "Test message";
+    private String productName = "Customizable Mug";
+    private String[] productNameParts = productName.split(" ");
+    private String productNameWithSmallSecondWord = productNameParts[0] + " " + productNameParts[1].substring(0, 1).toLowerCase() + productNameParts[1].substring(1);
 
 
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() {
         homePage = new HomePage(page);
         page.navigate(Properties.getProperty("app.url"));
     }
 
     @Test
-    void should_puchase_and_checkout_with_selected_product_test(){
+    void should_puchase_and_checkout_with_selected_product_test() {
         SearchResultPage searchResultPage = homePage.getTopMenuWithSearchSection().typeProductNameAndStartSearching(productName);
         Assertions.assertThat(searchResultPage.getSearchResultSection().getProductsList().get(0).textContent()).contains(productNameWithSmallSecondWord);
-        searchResultPage.getSearchResultSection().showProductDetails(productName);
+        ProductDetailsPage productDetailsPage = searchResultPage.getSearchResultSection().showProductDetails(productName);
+        productDetailsPage.getProductCustomizationSection().addCustomizableTextAndSaveIt(testMessage);
+        productDetailsPage.getAddToCartSection().addProductToCart();
+
+
     }
 }

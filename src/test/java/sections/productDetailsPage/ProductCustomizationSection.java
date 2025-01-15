@@ -13,8 +13,9 @@ public class ProductCustomizationSection {
 
     public ProductCustomizationSection(Page page) {
         this.placeHolder = page.locator("#field-textField1");
-        this.submitCustomizableData = page.locator("button[@name='submitCustomizedData']");
+        this.submitCustomizableData = page.locator("button[name='submitCustomizedData']");
         this.customizationMessage = page.locator(".customization-message");
+        this.page = page;
     }
 
     public void addCustomizableTextAndSaveIt(String text) {

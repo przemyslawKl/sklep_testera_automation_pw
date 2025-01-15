@@ -12,6 +12,11 @@ public class AddToCartSection {
 
     public AddToCartSection(Page page) {
         this.quantityAmountInput = page.locator("#quantity_wanted");
-        this.addToCartButton = page.locator(".btn btn-primary add-to-cart");
+        this.addToCartButton = page.locator(".add-to-cart");
+    }
+
+    public void addProductToCart() {
+        this.quantityAmountInput.fill("2");
+        this.addToCartButton.click();
     }
 }
