@@ -12,7 +12,10 @@ class FullBuyAndCheckoutTest extends BaseTest {
 
     HomePage homePage;
 
-    String productName = "Customizable mug";
+    String productName = "Customizable Mug";
+
+    String productNameWithSmallSecondWord = "Customizable mug";
+
 
 
     @BeforeEach
@@ -23,7 +26,8 @@ class FullBuyAndCheckoutTest extends BaseTest {
 
     @Test
     void should_puchase_and_checkout_with_selected_product_test(){
-        SearchResultPage customizableMug = homePage.getTopMenuWithSearchSection().typeProductNameAndStartSearching(productName);
-        Assertions.assertThat(customizableMug.getSearchResultSection().getProductsList().get(0).textContent()).contains(productName);
+        SearchResultPage searchResultPage = homePage.getTopMenuWithSearchSection().typeProductNameAndStartSearching(productName);
+        Assertions.assertThat(searchResultPage.getSearchResultSection().getProductsList().get(0).textContent()).contains(productNameWithSmallSecondWord);
+        searchResultPage.getSearchResultSection().showProductDetails(productName);
     }
 }
