@@ -3,8 +3,8 @@ package pages;
 import com.microsoft.playwright.Page;
 import lombok.Getter;
 import org.example.utils.PageUtils;
-import sections.productDetailsPage.AddToCartSection;
-import sections.productDetailsPage.ProductCustomizationSection;
+import pages.productDetailsPage.AddToCartSection;
+import pages.productDetailsPage.ProductCustomizationSection;
 @Getter
 public class ProductDetailsPage {
 
