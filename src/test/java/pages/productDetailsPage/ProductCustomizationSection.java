@@ -1,4 +1,4 @@
-package sections.productDetailsPage;
+package pages.productDetailsPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;

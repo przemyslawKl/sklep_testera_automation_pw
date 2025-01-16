@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.example.utils.Properties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pages.AddToCartConfirmationModalPage;
 import pages.HomePage;
 import pages.ProductDetailsPage;
 import pages.SearchResultPage;
@@ -30,8 +31,8 @@ class FullBuyAndCheckoutTest extends BaseTest {
         Assertions.assertThat(searchResultPage.getSearchResultSection().getProductsList().get(0).textContent()).contains(productNameWithSmallSecondWord);
         ProductDetailsPage productDetailsPage = searchResultPage.getSearchResultSection().showProductDetails(productName);
         productDetailsPage.getProductCustomizationSection().addCustomizableTextAndSaveIt(testMessage);
-        productDetailsPage.getAddToCartSection().addProductToCart();
-
-
+        AddToCartConfirmationModalPage addToCartConfirmationModalPage = productDetailsPage.getAddToCartSection().addProductToCart();
+        addToCartConfirmationModalPage.waitForBuyoutModalToBeVisible();
+        addToCartConfirmationModalPage.clickToGoToOrderRealization();
     }
 }
