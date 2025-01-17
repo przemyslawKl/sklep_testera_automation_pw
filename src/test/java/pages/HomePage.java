@@ -6,14 +6,13 @@ import sections.TopMenuWithSearchSection;
 import sections.TopNavigationSection;
 
 @Getter
-public class HomePage {
+public class HomePage extends BasePage {
 
-    protected Page page;
     private TopMenuWithSearchSection topMenuWithSearchSection;
     private TopNavigationSection topNavigationSection;
 
     public HomePage (Page page){
-        this.page = page;
+        super(page);
         this.topMenuWithSearchSection = new TopMenuWithSearchSection(page);
         this.topNavigationSection = new TopNavigationSection(page);
     }
