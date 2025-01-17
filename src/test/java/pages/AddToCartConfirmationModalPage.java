@@ -22,8 +22,9 @@ public class AddToCartConfirmationModalPage {
        return addToCartConfirmationMessage.innerText();
     }
 
-    public void clickToGoToOrderRealization(){
+    public CartPage clickToGoToOrderRealization(){
         goToOrderRealization.click();
+        return new CartPage(page);
     }
 
 
