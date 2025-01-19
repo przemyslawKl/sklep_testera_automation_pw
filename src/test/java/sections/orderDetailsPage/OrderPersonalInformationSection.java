@@ -61,7 +61,6 @@ public class OrderPersonalInformationSection extends BasePage {
                 .clickCustomerDataPrivacyCheckbox()
                 .clickContinueButton();
                 PageUtils.waitForPageToLoad(page);
-                page.pause();
     }
 
     private OrderPersonalInformationSection clickToOrderAsGuest() {
