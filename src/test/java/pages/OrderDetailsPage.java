@@ -1,11 +1,12 @@
 package pages;
 
 import com.microsoft.playwright.Page;
+import lombok.Getter;
 import org.example.utils.PageUtils;
 import sections.orderDetailsPage.OrderPersonalInformationSection;
-
+@Getter
 public class OrderDetailsPage extends BasePage {
-    public OrderPersonalInformationSection orderPersonalInformationSection;
+    private OrderPersonalInformationSection orderPersonalInformationSection;
 
     public OrderDetailsPage(Page page) {
         super(page);

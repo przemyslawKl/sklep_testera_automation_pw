@@ -3,7 +3,14 @@ package sections.orderDetailsPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import lombok.Getter;
+import org.example.utils.DateUtils;
+import org.example.utils.EmailUtils;
+import org.example.utils.FirstAndLastNameUtils;
+import org.example.utils.PageUtils;
 import pages.BasePage;
+
+import static org.example.utils.PageUtils.waitForPageToLoad;
+
 @Getter
 public class OrderPersonalInformationSection extends BasePage {
 
@@ -44,14 +51,17 @@ public class OrderPersonalInformationSection extends BasePage {
 
     public void enterPersonalInformation(){
         checkSocialTitleMr()
-                .enterFirstName("Przemek")
-                .enterLastName("Kowalski")
-                .enterBirthDate("05/30/1990")
+                .enterFirstName(FirstAndLastNameUtils.getFirstName())
+                .enterLastName(FirstAndLastNameUtils.getLastName())
+                .enterBirthDate(DateUtils.getRandomDate())
+                .enterEmail(EmailUtils.getRandomEmail())
                 .clickRecieveOfferFromPartnersCheckbox()
                 .clickTermsAndConditionsCheckbox()
                 .clickNewsletterCheckbox()
                 .clickCustomerDataPrivacyCheckbox()
                 .clickContinueButton();
+                PageUtils.waitForPageToLoad(page);
+                page.pause();
     }
 
     private OrderPersonalInformationSection clickToOrderAsGuest() {
