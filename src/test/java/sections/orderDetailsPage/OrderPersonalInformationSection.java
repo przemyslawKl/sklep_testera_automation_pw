@@ -2,8 +2,9 @@ package sections.orderDetailsPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import lombok.Getter;
 import pages.BasePage;
-
+@Getter
 public class OrderPersonalInformationSection extends BasePage {
 
     private final String personalInfoSection = "#checkout-personal-information-step ";
@@ -21,6 +22,7 @@ public class OrderPersonalInformationSection extends BasePage {
     private Locator termsAndConditionsCheckbox;
     private Locator newsletterCheckbox;
     private Locator customerDataPrivacyCheckbox;
+    private Locator continueButton;
 
     public OrderPersonalInformationSection(Page page) {
         super(page);
@@ -37,6 +39,88 @@ public class OrderPersonalInformationSection extends BasePage {
         this.termsAndConditionsCheckbox = page.locator("//div[8]//div[1]//span[1]//label[1]");
         this.newsletterCheckbox = page.locator("//div[9]//div[1]//span[1]//label[1]");
         this.customerDataPrivacyCheckbox = page.locator("//div[10]//div[1]//span[1]//label[1]");
+        this.continueButton = page.locator(customerForm + "button[name=continue]");
+    }
 
+    public void enterPersonalInformation(){
+        checkSocialTitleMr()
+                .enterFirstName("Przemek")
+                .enterLastName("Kowalski")
+                .enterBirthDate("05/30/1990")
+                .clickRecieveOfferFromPartnersCheckbox()
+                .clickTermsAndConditionsCheckbox()
+                .clickNewsletterCheckbox()
+                .clickCustomerDataPrivacyCheckbox()
+                .clickContinueButton();
+    }
+
+    private OrderPersonalInformationSection clickToOrderAsGuest() {
+        orderAsGuestChoose.click();
+        return this;
+    }
+
+    private OrderPersonalInformationSection clickToOrderAsALoginUser() {
+        orderAsALoginUserChoose.click();
+        return this;
+    }
+
+    private OrderPersonalInformationSection checkSocialTitleMr() {
+        socialTitleMr.check();
+        return this;
+    }
+
+    private OrderPersonalInformationSection checkSocialTitleMrs() {
+        socialTitleMrs.check();
+        return this;
+    }
+
+    private OrderPersonalInformationSection enterFirstName(String firstName) {
+        this.firstName.fill(firstName);
+        return this;
+    }
+
+    private OrderPersonalInformationSection enterLastName(String lastName) {
+        this.lastName.fill(lastName);
+        return this;
+    }
+
+    private OrderPersonalInformationSection enterEmail(String email) {
+        this.email.fill(email);
+        return this;
+    }
+
+    private OrderPersonalInformationSection enterPassword(String password) {
+        this.password.fill(password);
+        return this;
+    }
+
+    private OrderPersonalInformationSection enterBirthDate(String birthDate) {
+        this.birthDate.fill(birthDate);
+        return this;
+    }
+
+    private OrderPersonalInformationSection clickRecieveOfferFromPartnersCheckbox() {
+        recieveOfferFromPartnersCheckbox.check();
+        return this;
+    }
+
+    private OrderPersonalInformationSection clickTermsAndConditionsCheckbox() {
+        termsAndConditionsCheckbox.check();
+        return this;
+    }
+
+    private OrderPersonalInformationSection clickNewsletterCheckbox() {
+        newsletterCheckbox.check();
+        return this;
+    }
+
+    private OrderPersonalInformationSection clickCustomerDataPrivacyCheckbox() {
+        customerDataPrivacyCheckbox.check();
+        return this;
+    }
+
+    private OrderPersonalInformationSection clickContinueButton() {
+        continueButton.click();
+        return this;
     }
 }
