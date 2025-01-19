@@ -32,7 +32,7 @@ class FullBuyAndCheckoutTest extends BaseTest {
         AddToCartConfirmationModalPage addToCartConfirmationModalPage = productDetailsPage.getAddToCartSection().addProductToCart();
         addToCartConfirmationModalPage.waitForBuyoutModalToBeVisible();
         CartPage cartPage = addToCartConfirmationModalPage.clickToGoToOrderRealization();
-        cartPage.getSummarySection().clickToGoToOrderRealization();
-
+        OrderDetailsPage orderDetailsPage = cartPage.getSummarySection().clickToGoToOrderRealization();
+        orderDetailsPage.orderPersonalInformationSection.enterPersonalInformation();
     }
 }
