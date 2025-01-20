@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.*;
 import pages.shoppingCartPage.SummarySection;
+import sections.orderDetailsPage.OrderAddressSection;
 
 class FullBuyAndCheckoutTest extends BaseTest {
 
@@ -33,6 +34,7 @@ class FullBuyAndCheckoutTest extends BaseTest {
         addToCartConfirmationModalPage.waitForBuyoutModalToBeVisible();
         CartPage cartPage = addToCartConfirmationModalPage.clickToGoToOrderRealization();
         OrderDetailsPage orderDetailsPage = cartPage.getSummarySection().clickToGoToOrderRealization();
-        orderDetailsPage.getOrderPersonalInformationSection().enterPersonalInformation();
+        OrderAddressSection orderAddressSection = orderDetailsPage.getOrderPersonalInformationSection().enterPersonalInformation();
+        orderAddressSection.enterAddressDetailInformation();
     }
 }

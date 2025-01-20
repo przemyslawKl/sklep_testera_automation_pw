@@ -8,9 +8,6 @@ import org.example.utils.EmailUtils;
 import org.example.utils.FirstAndLastNameUtils;
 import org.example.utils.PageUtils;
 import pages.BasePage;
-
-import static org.example.utils.PageUtils.waitForPageToLoad;
-
 @Getter
 public class OrderPersonalInformationSection extends BasePage {
 
@@ -49,7 +46,7 @@ public class OrderPersonalInformationSection extends BasePage {
         this.continueButton = page.locator(customerForm + "button[name=continue]");
     }
 
-    public void enterPersonalInformation(){
+    public OrderAddressSection enterPersonalInformation(){
         checkSocialTitleMr()
                 .enterFirstName(FirstAndLastNameUtils.getFirstName())
                 .enterLastName(FirstAndLastNameUtils.getLastName())
@@ -61,6 +58,7 @@ public class OrderPersonalInformationSection extends BasePage {
                 .clickCustomerDataPrivacyCheckbox()
                 .clickContinueButton();
                 PageUtils.waitForPageToLoad(page);
+                return new OrderAddressSection(page);
     }
 
     private OrderPersonalInformationSection clickToOrderAsGuest() {
