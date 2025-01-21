@@ -103,7 +103,7 @@ public class OrderAddressSection extends BasePage {
         return this;
     }
 
-    public OrderAddressSection enterAddressDetailInformation(){
+    public ShippingMethodSection enterAddressDetailInformation(){
         fillFirstName(FirstAndLastNameUtils.getFirstName())
                 .fillLastName(FirstAndLastNameUtils.getLastName())
                 .fillCompany(AddressDetailsUtils.getRandomCompanyName())
@@ -115,7 +115,7 @@ public class OrderAddressSection extends BasePage {
                 .fillPhoneNumber(AddressDetailsUtils.getRandomPhoneNumber())
                 .checkUseAddressForInvoice()
                 .clickContinueButton();
-        return new OrderAddressSection(page);
+        return new ShippingMethodSection(page);
     }
 
 }
