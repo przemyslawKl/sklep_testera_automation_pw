@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import pages.*;
 import pages.shoppingCartPage.SummarySection;
 import sections.orderDetailsPage.OrderAddressSection;
+import sections.orderDetailsPage.ShippingMethodSection;
 
 class FullBuyAndCheckoutTest extends BaseTest {
 
@@ -35,6 +36,8 @@ class FullBuyAndCheckoutTest extends BaseTest {
         CartPage cartPage = addToCartConfirmationModalPage.clickToGoToOrderRealization();
         OrderDetailsPage orderDetailsPage = cartPage.getSummarySection().clickToGoToOrderRealization();
         OrderAddressSection orderAddressSection = orderDetailsPage.getOrderPersonalInformationSection().enterPersonalInformation();
-        orderAddressSection.enterAddressDetailInformation();
+        ShippingMethodSection shippingMethodSection = orderAddressSection.enterAddressDetailInformation();
+        shippingMethodSection.chooseClickAndCollectShippingAddCommentAndClickContinueButton();
+
     }
 }
