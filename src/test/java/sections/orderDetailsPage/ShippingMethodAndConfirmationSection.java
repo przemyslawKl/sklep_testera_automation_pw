@@ -2,19 +2,21 @@ package sections.orderDetailsPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import org.assertj.core.api.Assertions;
 import org.example.utils.TestTextUtils;
 import pages.BasePage;
 
-public class ShippingMethodSection extends BasePage {
+public class ShippingMethodAndConfirmationSection extends BasePage {
 
     private final String wayOfShippingSection = "#checkout-delivery-step ";
     private Locator clickAndCollectCheckbox;
     private Locator myCarrierCheckbox;
     private Locator commentInputField;
     private Locator continueButton;
+    private Locator confirmationText;
 
 
-    public ShippingMethodSection(Page page) {
+    public ShippingMethodAndConfirmationSection(Page page) {
         super(page);
         this.clickAndCollectCheckbox = page.locator(wayOfShippingSection + "#delivery_option_1");
         this.myCarrierCheckbox = page.locator(wayOfShippingSection + "#delivery_option_2");
@@ -22,29 +24,30 @@ public class ShippingMethodSection extends BasePage {
         this.continueButton = page.locator(wayOfShippingSection + "button[type=submit]");
     }
 
-    private ShippingMethodSection chooseClickAndCollectShipping() {
+    private ShippingMethodAndConfirmationSection chooseClickAndCollectShipping() {
         clickAndCollectCheckbox.check();
         return this;
     }
 
-    private ShippingMethodSection chooseMyCarrierShipping() {
+    private ShippingMethodAndConfirmationSection chooseMyCarrierShipping() {
         myCarrierCheckbox.check();
         return this;
     }
 
-    private ShippingMethodSection addComment(String comment) {
+    private ShippingMethodAndConfirmationSection addComment(String comment) {
         commentInputField.fill(comment);
         return this;
     }
-    private ShippingMethodSection clickContinueButton() {
+    private ShippingMethodAndConfirmationSection clickContinueButton() {
         continueButton.click();
         return this;
     }
 
-    public ShippingMethodSection chooseClickAndCollectShippingAddCommentAndClickContinueButton() {
+
+    public PaymentChooseSection chooseClickAndCollectShippingAddCommentAndClickContinueButton() {
         chooseClickAndCollectShipping()
                 .addComment(TestTextUtils.createRandomText())
                 .clickContinueButton();
-        return this;
+        return new PaymentChooseSection(page);
     }
 }

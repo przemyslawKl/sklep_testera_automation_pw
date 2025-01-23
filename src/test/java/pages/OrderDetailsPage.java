@@ -3,23 +3,24 @@ package pages;
 import com.microsoft.playwright.Page;
 import lombok.Getter;
 import org.example.utils.PageUtils;
-import org.junit.jupiter.api.Order;
-import sections.orderDetailsPage.OrderAddressSection;
-import sections.orderDetailsPage.OrderPersonalInformationSection;
-import sections.orderDetailsPage.ShippingMethodSection;
+import sections.orderDetailsPage.*;
 
 @Getter
 public class OrderDetailsPage extends BasePage {
     private OrderPersonalInformationSection orderPersonalInformationSection;
     private OrderAddressSection orderAddressSection;
-    private ShippingMethodSection shippingMethodSection;
+    private ShippingMethodAndConfirmationSection shippingMethodAndConfirmationSection;
+    private PaymentChooseSection paymentChooseSection;
+    private ConfirmationSection confirmationSection;
 
     public OrderDetailsPage(Page page) {
         super(page);
         PageUtils.waitForPageToLoad(page);
         this.orderPersonalInformationSection = new OrderPersonalInformationSection(page);
         this.orderAddressSection = new OrderAddressSection(page);
-        this.shippingMethodSection = new ShippingMethodSection(page);
+        this.shippingMethodAndConfirmationSection = new ShippingMethodAndConfirmationSection(page);
+        this.paymentChooseSection = new PaymentChooseSection(page);
+        this.confirmationSection = new ConfirmationSection(page);
     }
 
 }
