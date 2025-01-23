@@ -5,9 +5,10 @@ import org.example.utils.Properties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.*;
-import pages.shoppingCartPage.SummarySection;
+import sections.orderDetailsPage.ConfirmationSection;
 import sections.orderDetailsPage.OrderAddressSection;
-import sections.orderDetailsPage.ShippingMethodSection;
+import sections.orderDetailsPage.PaymentChooseSection;
+import sections.orderDetailsPage.ShippingMethodAndConfirmationSection;
 
 class FullBuyAndCheckoutTest extends BaseTest {
 
@@ -36,8 +37,13 @@ class FullBuyAndCheckoutTest extends BaseTest {
         CartPage cartPage = addToCartConfirmationModalPage.clickToGoToOrderRealization();
         OrderDetailsPage orderDetailsPage = cartPage.getSummarySection().clickToGoToOrderRealization();
         OrderAddressSection orderAddressSection = orderDetailsPage.getOrderPersonalInformationSection().enterPersonalInformation();
-        ShippingMethodSection shippingMethodSection = orderAddressSection.enterAddressDetailInformation();
-        shippingMethodSection.chooseClickAndCollectShippingAddCommentAndClickContinueButton();
+        ShippingMethodAndConfirmationSection shippingMethodAndConfirmationSection = orderAddressSection.enterAddressDetailInformation();
+        shippingMethodAndConfirmationSection.chooseClickAndCollectShippingAddCommentAndClickContinueButton();
+        ConfirmationSection confirmationSection = orderDetailsPage.getPaymentChooseSection().addPaymentDataAndPlaceOrder();
+        confirmationSection.waitForConfirmationSectionToBeVisible();
+        confirmationSection.checkIfConfirmationSectionHasText();
+
+
 
     }
 }
