@@ -24,7 +24,7 @@ public class SearchResultSection {
         ProductDTO productDTO = changeProductDetailsToDTO().stream()
                 .filter(p -> p.getProductName().equals(productName))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Product not found: " + productName));
+                .orElseThrow(() -> new RuntimeException("Product not found: " + productName + "Found product name: " + changeProductDetailsToDTO().stream().map(ProductDTO::getProductName).collect(Collectors.toList())));
 
         productDTO.getThumbnail().click();
 
