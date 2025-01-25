@@ -11,8 +11,6 @@ import sections.orderDetailsPage.PaymentChooseSection;
 import sections.orderDetailsPage.ShippingMethodAndConfirmationSection;
 
 class FullBuyAndCheckoutTest extends BaseTest {
-
-
     private HomePage homePage;
     private String testMessage = "Test message";
     private String mugProductName = "Customizable Mug";
@@ -60,6 +58,18 @@ class FullBuyAndCheckoutTest extends BaseTest {
         confirmationSection.checkIfConfirmationSectionHasText();
     }
 
+    private void wholeProcedureOfBuyingAndCheckoutForVectorGraphics(ProductDetailsPage productDetailsPage) {
+        AddToCartConfirmationModalPage addToCartConfirmationModalPage = productDetailsPage.getAddToCartSection().addProductToCart();
+        addToCartConfirmationModalPage.waitForBuyoutModalToBeVisible();
+        CartPage cartPage = addToCartConfirmationModalPage.clickToGoToOrderRealization();
+        OrderDetailsPage orderDetailsPage = cartPage.getSummarySection().clickToGoToOrderRealization();
+        OrderAddressSection orderAddressSection = orderDetailsPage.getOrderPersonalInformationSection().enterPersonalInformation();
+        orderAddressSection.enterAddressDetailInformation();
+        ConfirmationSection confirmationSection = orderDetailsPage.getPaymentChooseSection().addPaymentDataAndPlaceOrder();
+        confirmationSection.waitForConfirmationSectionToBeVisible();
+        confirmationSection.checkIfConfirmationSectionHasText();
+    }
+
     @Test
     void should_puchase_mug_and_checkout_with_selected_product_test() {
         ProductDetailsPage productDetailsPage = searchingAndSelectingProduct(mugProductName, mugProductNameWithSmallSecondWord);
@@ -82,7 +92,7 @@ class FullBuyAndCheckoutTest extends BaseTest {
     @Test
     void should_puchase_vector_graphic_and_checkout_with_selected_product_test() {
         ProductDetailsPage productDetailsPage = searchingAndSelectingProduct(vectorGraphicProductName, vectorGraphicWithSmallSecondWord);
-        wholeProcedureOfBuyingAndCheckout(productDetailsPage);
+        wholeProcedureOfBuyingAndCheckoutForVectorGraphics(productDetailsPage);
     }
 
     @Test
