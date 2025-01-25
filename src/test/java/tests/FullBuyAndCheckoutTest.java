@@ -18,15 +18,21 @@ class FullBuyAndCheckoutTest extends BaseTest {
     private String mugProductName = "Customizable Mug";
     private String tshirtProductName = "Hummingbird Printed T-Shirt";
     private String cushionProductName = "Hummingbird Cushion";
+    private String vectorGraphicProductName = "Mountain Fox - Vector Graphics";
+    private String notebookProductName = "Mountain Fox Notebook";
     private String[] mugProductNameParts = mugProductName.split(" ");
     private String[] tShirtProductNameParts = tshirtProductName.split(" ");
     private String[] cushionProductNameParts = cushionProductName.split(" ");
+    private String[] vectorGraphicParts = vectorGraphicProductName.split(" ");
+    private String[] notebookProductNameParts = notebookProductName.split(" ");
     private String getProductNameWithSmallSecondWord(String[] productNameParts) {
         return productNameParts[0] + " " + productNameParts[1].substring(0, 1).toLowerCase() + productNameParts[1].substring(1).toLowerCase();
     }
     private String tShirtProductNameWithSmallSecondWord = getProductNameWithSmallSecondWord(tShirtProductNameParts);
     private String mugProductNameWithSmallSecondWord = getProductNameWithSmallSecondWord(mugProductNameParts);
     private String cushionProductNameWithSmallSecondWord = getProductNameWithSmallSecondWord(cushionProductNameParts);
+    private String vectorGraphicWithSmallSecondWord = getProductNameWithSmallSecondWord(vectorGraphicParts);
+    private String notebookProductNameWithSmallSecondWord = getProductNameWithSmallSecondWord(notebookProductNameParts);
 
     @BeforeEach
     void beforeEach() {
@@ -73,4 +79,15 @@ class FullBuyAndCheckoutTest extends BaseTest {
         wholeProcedureOfBuyingAndCheckout(productDetailsPage);
     }
 
+    @Test
+    void should_puchase_vector_graphic_and_checkout_with_selected_product_test() {
+        ProductDetailsPage productDetailsPage = searchingAndSelectingProduct(vectorGraphicProductName, vectorGraphicWithSmallSecondWord);
+        wholeProcedureOfBuyingAndCheckout(productDetailsPage);
+    }
+
+    @Test
+    void should_puchase_notebook_and_checkout_with_selected_product_test() {
+        ProductDetailsPage productDetailsPage = searchingAndSelectingProduct(notebookProductName, notebookProductNameWithSmallSecondWord);
+        wholeProcedureOfBuyingAndCheckout(productDetailsPage);
+    }
 }
