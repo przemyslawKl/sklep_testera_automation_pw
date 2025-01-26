@@ -5,7 +5,6 @@ import com.microsoft.playwright.Page;
 
 public class ProductCustomizationSection {
 
-
     private Page page;
     private Locator placeHolder;
     private Locator submitCustomizableData;
@@ -17,11 +16,9 @@ public class ProductCustomizationSection {
         this.customizationMessage = page.locator(".customization-message");
         this.page = page;
     }
-
     public void addCustomizableTextAndSaveIt(String text) {
         placeHolder.fill(text);
         submitCustomizableData.click();
         page.waitForCondition(() -> customizationMessage.isVisible());
     }
-
 }

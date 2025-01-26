@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import pages.*;
 import sections.orderDetailsPage.ConfirmationSection;
 import sections.orderDetailsPage.OrderAddressSection;
-import sections.orderDetailsPage.PaymentChooseSection;
 import sections.orderDetailsPage.ShippingMethodAndConfirmationSection;
 
 class FullBuyAndCheckoutTest extends BaseTest {

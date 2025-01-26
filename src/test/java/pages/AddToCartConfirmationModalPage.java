@@ -15,7 +15,6 @@ public class AddToCartConfirmationModalPage extends BasePage {
         this.addToCartConfirmationMessage = page.locator("#myModalLabel");
         this.goToOrderRealization = page.locator("div[class='cart-content-btn'] a[class='btn btn-primary']");
     }
-
     public String getConfirmationMessage(){
        return addToCartConfirmationMessage.innerText();
     }
@@ -24,8 +23,6 @@ public class AddToCartConfirmationModalPage extends BasePage {
         goToOrderRealization.click();
         return new CartPage(page);
     }
-
-
     public void waitForBuyoutModalToBeVisible(){
         page.waitForCondition(() -> addToCartConfirmationMessage.isVisible());}
 }

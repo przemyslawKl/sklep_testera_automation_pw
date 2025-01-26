@@ -17,7 +17,6 @@ public class BrowserFactory {
         }
         return pw;
     }
-
     public Browser getBrowser(){
         String browserName = Properties.getProperty("browser.channel");
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
@@ -33,6 +32,5 @@ public class BrowserFactory {
             default -> throw new IllegalStateException("Browser " + browserName + " is not supported");
         }
         return browser;
-
     }
 }
