@@ -12,7 +12,6 @@ public class SearchResultPage {
     @Getter
     private SearchResultSection searchResultSection;
 
-
     public SearchResultPage(Page page) {
         waitForPageToLoad(page);
         this.searchResultSection = new SearchResultSection(page);
