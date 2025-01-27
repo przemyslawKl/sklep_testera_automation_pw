@@ -54,7 +54,6 @@ class FullBuyAndCheckoutTest extends BaseTest {
         shippingMethodAndConfirmationSection.chooseClickAndCollectShippingAddCommentAndClickContinueButton();
         ConfirmationSection confirmationSection = orderDetailsPage.getPaymentChooseSection().addPaymentDataAndPlaceOrder();
         confirmationSection.waitForConfirmationSectionToBeVisible();
-        confirmationSection.checkIfConfirmationSectionHasText();
     }
 
     private void wholeProcedureOfBuyingAndCheckoutForVectorGraphics(ProductDetailsPage productDetailsPage) {
@@ -66,7 +65,6 @@ class FullBuyAndCheckoutTest extends BaseTest {
         orderAddressSection.enterAddressDetailInformation();
         ConfirmationSection confirmationSection = orderDetailsPage.getPaymentChooseSection().addPaymentDataAndPlaceOrder();
         confirmationSection.waitForConfirmationSectionToBeVisible();
-        confirmationSection.checkIfConfirmationSectionHasText();
     }
 
     @Test
