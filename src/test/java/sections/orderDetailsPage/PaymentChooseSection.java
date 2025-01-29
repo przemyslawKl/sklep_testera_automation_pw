@@ -3,6 +3,7 @@ package sections.orderDetailsPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import pages.BasePage;
+import pages.OrderConfirmationPage;
 
 public class PaymentChooseSection extends BasePage {
 
@@ -48,10 +49,10 @@ public class PaymentChooseSection extends BasePage {
         return this;
     }
 
-    public ConfirmationSection addPaymentDataAndPlaceOrder(){
+    public OrderConfirmationPage addPaymentDataAndPlaceOrder(){
         choosePayByCashOnDelivery()
                 .agreeToTermsOfService()
                 .clickToPlaceOrder();
-        return new ConfirmationSection(page);
+        return new OrderConfirmationPage(page);
     }
 }
