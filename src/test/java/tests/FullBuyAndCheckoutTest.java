@@ -52,8 +52,8 @@ class FullBuyAndCheckoutTest extends BaseTest {
         OrderAddressSection orderAddressSection = orderDetailsPage.getOrderPersonalInformationSection().enterPersonalInformation();
         ShippingMethodAndConfirmationSection shippingMethodAndConfirmationSection = orderAddressSection.enterAddressDetailInformation();
         shippingMethodAndConfirmationSection.chooseClickAndCollectShippingAddCommentAndClickContinueButton();
-        ConfirmationSection confirmationSection = orderDetailsPage.getPaymentChooseSection().addPaymentDataAndPlaceOrder();
-        confirmationSection.waitForConfirmationSectionToBeVisible();
+        OrderConfirmationPage confirmationSection = orderDetailsPage.getPaymentChooseSection().addPaymentDataAndPlaceOrder();
+        confirmationSection.getConfirmationSection().checkIfConfirmationMessageHasProperText();
     }
 
     private void wholeProcedureOfBuyingAndCheckoutForVectorGraphics(ProductDetailsPage productDetailsPage) {
@@ -63,8 +63,8 @@ class FullBuyAndCheckoutTest extends BaseTest {
         OrderDetailsPage orderDetailsPage = cartPage.getSummarySection().clickToGoToOrderRealization();
         OrderAddressSection orderAddressSection = orderDetailsPage.getOrderPersonalInformationSection().enterPersonalInformation();
         orderAddressSection.enterAddressDetailInformation();
-        ConfirmationSection confirmationSection = orderDetailsPage.getPaymentChooseSection().addPaymentDataAndPlaceOrder();
-        confirmationSection.waitForConfirmationSectionToBeVisible();
+        OrderConfirmationPage orderConfirmationPage = orderDetailsPage.getPaymentChooseSection().addPaymentDataAndPlaceOrder();
+        orderConfirmationPage.getConfirmationSection().checkIfConfirmationMessageHasProperText();
     }
 
     @Test
