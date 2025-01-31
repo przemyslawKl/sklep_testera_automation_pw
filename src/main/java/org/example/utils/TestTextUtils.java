@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TestTextUtils {
-
     public static String createRandomText(){
         return new Faker().lorem().sentence(150);
     }

@@ -8,11 +8,9 @@ import java.util.Random;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AddressDetailsUtils {
-
     public static String getRandomAddress() {
         return new Faker().address().fullAddress();
     }
-
     public static String getRandomCompanyName() {
         return new Faker().company().name();
     }

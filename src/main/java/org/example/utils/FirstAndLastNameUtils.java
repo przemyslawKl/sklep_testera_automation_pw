@@ -10,7 +10,6 @@ public class FirstAndLastNameUtils {
     public static String getFirstName() {
         return new Faker().name().firstName();
     }
-
     public static String getLastName() {
         return new Faker().name().lastName();
     }
