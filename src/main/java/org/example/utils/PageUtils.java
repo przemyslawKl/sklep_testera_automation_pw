@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PageUtils {
-
-
     public static void waitForPageToLoad(Page page) {
         page.waitForLoadState(LoadState.NETWORKIDLE);
     }

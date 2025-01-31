@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PasswordUtils {
-
     public static String createRandomPassword() {
         return new Faker().internet().password();
     }

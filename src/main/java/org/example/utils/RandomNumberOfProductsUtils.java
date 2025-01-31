@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RandomNumberOfProductsUtils {
-
     public static Integer getRandomNumberOfProducts() {
         return new Faker().random().nextInt(1, 5);
     }
